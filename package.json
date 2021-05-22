@@ -1,0 +1,62 @@
+{
+	"name": "happyhouse-frontend",
+	"version": "1.0.0",
+	"scripts": {
+		"commit": "git-cz",
+		"dev": "next",
+		"build": "next build",
+		"start": "next start",
+		"prettier:check": "prettier --check .",
+		"prettier:fix": "prettier --write .",
+		"stylelint:check": "stylelint **/*.css",
+		"stylelint:fix": "stylelint **/*.css --fix",
+		"eslint:check": "eslint .",
+		"lint": "yarn eslint:check && yarn prettier:check && stylelint:check",
+		"lint:fix": "yarn eslint:check && yarn prettier:fix && eslint:check",
+		"prepare": "husky install"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-customizable"
+		},
+		"cz-customizable": {
+			"config": "./configs/commits/commitizen.js"
+		}
+	},
+	"prettier": "./configs/linters/.prettierrc.json",
+	"eslintConfig": {
+		"extends": [
+			"./configs/linters/.eslintrc.json"
+		]
+	},
+	"stylelint": {
+		"extends": [
+			"./configs/linters/.stylelintrc.json"
+		]
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^12.1.4",
+		"@types/react": "^17.0.6",
+		"@typescript-eslint/eslint-plugin": "^4.24.0",
+		"@typescript-eslint/parser": "^4.24.0",
+		"commitizen": "^4.2.4",
+		"cz-customizable": "^6.3.0",
+		"eslint": "^7.26.0",
+		"eslint-plugin-react": "^7.23.2",
+		"lint-staged": "^11.0.0",
+		"stylelint": "^13.13.1",
+		"stylelint-config-standard": "^22.0.0",
+		"typescript": "^4.2.4"
+	},
+	"dependencies": {
+		"next": "^10.0.0",
+		"next-plugin-preact": "^3.0.3",
+		"preact": "^10.5.5",
+		"preact-render-to-string": "^5.1.11",
+		"prettier": "^2.3.0",
+		"react": "npm:@preact/compat@^0.0.3",
+		"react-dom": "npm:@preact/compat@^0.0.3",
+		"react-ssr-prepass": "npm:preact-ssr-prepass@^1.1.2"
+	},
+	"author": "Bekert"
+}
