@@ -1,0 +1,13 @@
+.caption {
+	text-align: center;
+}
+
+.settingsForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formElementWidth {
+	width: 50%;
+}

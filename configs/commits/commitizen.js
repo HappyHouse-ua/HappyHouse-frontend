@@ -20,20 +20,7 @@ function convertCommitTypes(commitTypes) {
 	return result
 }
 
-function generateScopes(dirScopes) {
-	let result = []
-	if (!dirScopes) return result
-	for (const key in dirScopes) {
-		const files = fs.readdirSync(path.resolve(__dirname, '../..', key))
-		for (const file of files) {
-			result.push((dirScopes[key] || '') + file)
-		}
-	}
-	return result
-}
-
 module.exports = {
 	types: convertCommitTypes(cz.types),
-	scopes: [...cz.scopes, ...generateScopes(cz.dirScopes)],
 	...cz.other
 }
