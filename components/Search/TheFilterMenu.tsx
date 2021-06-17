@@ -5,7 +5,8 @@ import {
 	Radio,
 	TextField,
 	IconButton,
-	Icon
+	Icon,
+	Button
 } from '@material-ui/core'
 import { useState } from 'preact/hooks'
 import { IValidationState, useChangeHandler } from '../../utils/useChangeHandler'
@@ -132,6 +133,9 @@ export function TheFilterMenu({ close }: ITheFilterMenuProps) {
 							validations={validations}
 						/>
 					))}
+				<Button color='primary' variant='contained' fullWidth>
+					Применить
+				</Button>
 			</form>
 		</>
 	)

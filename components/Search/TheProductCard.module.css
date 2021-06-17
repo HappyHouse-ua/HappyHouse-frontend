@@ -1,0 +1,13 @@
+.description {
+	font-weight: normal !important;
+}
+
+.property {
+	font-weight: normal !important;
+	font-size: 1rem !important;
+	margin-right: 50px !important;
+}
+
+.root {
+	cursor: pointer;
+}
