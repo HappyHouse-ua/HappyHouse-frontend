@@ -1,0 +1,14 @@
+.caption {
+	text-align: center;
+}
+
+.filter-icon {
+	color: #757575;
+	font-size: 2rem !important;
+}
+
+.filter-btn {
+	position: absolute !important;
+	right: 0;
+	top: 5px;
+}

@@ -1,0 +1,12 @@
+.formRoot {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.closeBtn {
+	position: absolute !important;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+}

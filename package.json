@@ -51,6 +51,7 @@
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.11.4",
+		"@material-ui/lab": "^4.0.0-alpha.58",
 		"next": "^10.0.0",
 		"next-plugin-preact": "^3.0.3",
 		"preact": "^10.5.5",

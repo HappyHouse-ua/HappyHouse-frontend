@@ -1,6 +1,7 @@
 import { Box, Grid, Hidden } from '@material-ui/core'
+import MainLayout from '../components/MainLayout'
 import { ProductCard } from '../components/ProductCard'
-import { TheSearchHeader } from '../components/TheSearchHeader'
+import { TheHeader } from '../components/Search/TheHeader'
 
 interface IProductProperties {
 	type: string
@@ -32,25 +33,27 @@ const product: IProduct = {
 	}
 }
 
-const products = new Array(5).fill(product)
+const products = new Array(6).fill(product)
 
 function Search() {
 	return (
-		<Grid container>
-			<Grid item xs={12} md={6}>
-				<TheSearchHeader />
-				<Box display='flex' flexDirection='column'>
-					{products.map((product, index) => (
-						<ProductCard key={index} />
-					))}
-				</Box>
-			</Grid>
-			<Hidden smDown>
-				<Grid item md={6}>
-					<p>in the future, here will be map</p>
+		<MainLayout>
+			<Grid container>
+				<Grid item xs={12} md={6}>
+					<TheHeader />
+					<Box display='flex' flexDirection='column'>
+						{products.map((product, index) => (
+							<ProductCard key={index} />
+						))}
+					</Box>
 				</Grid>
-			</Hidden>
-		</Grid>
+				<Hidden smDown>
+					<Grid item md={6}>
+						<p>in the future, here will be map</p>
+					</Grid>
+				</Hidden>
+			</Grid>
+		</MainLayout>
 	)
 }
 export default Search

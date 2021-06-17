@@ -1,10 +1,10 @@
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
-import { useBreakpoints } from '../utils/useBreakpoints'
+import { useBreakpoints } from '../../utils/useBreakpoints'
 import { useState } from 'preact/hooks'
-import { ChangeEvent } from 'react'
 import Link from 'next/link'
 
-import styles from './TheIndexHeader.module.css'
+import styles from './TheHeader.module.css'
+import { useChangeHandler } from '../../utils/useChangeHandler'
 
 const accommodationTypes = ['Квартира', 'Дом', 'Земля']
 const cities = ['Славянск', 'Краматорск']
@@ -15,7 +15,7 @@ interface ISearchSettings {
 	city: string
 }
 
-export function Header() {
+export function TheHeader() {
 	const breakpoints = useBreakpoints()
 
 	const [searchSettings, setSearchSettings] = useState<ISearchSettings>({
@@ -24,14 +24,7 @@ export function Header() {
 		city: cities[0]
 	})
 
-	const changeHandler = (event: ChangeEvent, type: string) => {
-		setSearchSettings((prevSettings: ISearchSettings): ISearchSettings => {
-			if (event instanceof HTMLSelectElement) {
-				return { ...prevSettings, [type]: event.value }
-			}
-			return prevSettings
-		})
-	}
+	const changeHandler = useChangeHandler(setSearchSettings)
 	return (
 		<header>
 			<Grid container>
@@ -58,7 +51,7 @@ export function Header() {
 							select
 							label='Тип жилья'
 							value={searchSettings.accommodationType}
-							onChange={e => changeHandler(e, 'accommodationType')}
+							onChange={changeHandler('accommodationType')}
 							SelectProps={{
 								native: true
 							}}
@@ -77,7 +70,7 @@ export function Header() {
 							select
 							label='Тип сделки'
 							value={searchSettings.actType}
-							onChange={e => changeHandler(e, 'actType')}
+							onChange={changeHandler('actType')}
 							SelectProps={{
 								native: true
 							}}
@@ -93,7 +86,7 @@ export function Header() {
 							select
 							label='Город'
 							value={searchSettings.city}
-							onChange={e => changeHandler(e, 'city')}
+							onChange={changeHandler('city')}
 							SelectProps={{
 								native: true
 							}}

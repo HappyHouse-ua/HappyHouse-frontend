@@ -2,16 +2,16 @@ import { Typography } from '@material-ui/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './ImageCard.module.css'
+import styles from './TheImageCard.module.css'
 
-interface IImageCardProps {
+interface ITheImageCardProps {
 	title: string
 	src: string
 	width: number
 	href: string
 }
 
-export function ImageCard({ title, src, width, href }: IImageCardProps) {
+export function TheImageCard({ title, src, width, href }: ITheImageCardProps) {
 	const height = (width * 9) / 16
 
 	return (

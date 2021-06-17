@@ -1,3 +1,8 @@
 * {
-	user-select: none;
+	user-select: text;
+}
+
+.icon {
+	color: #757575;
+	font-size: 2rem !important;
 }
