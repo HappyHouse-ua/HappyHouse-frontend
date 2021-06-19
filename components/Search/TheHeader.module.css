@@ -1,5 +1,6 @@
 .caption {
 	text-align: center;
+	cursor: pointer;
 }
 
 .filter-icon {

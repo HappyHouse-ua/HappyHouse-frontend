@@ -4,6 +4,7 @@ import { useState } from 'preact/hooks'
 import { MouseEvent } from 'react'
 import { useBreakpoints } from '../../utils/useBreakpoints'
 import { TheFilterMenu } from './TheFilterMenu'
+import Link from 'next/link'
 
 import styles from './TheHeader.module.css'
 
@@ -39,9 +40,12 @@ export function TheHeader() {
 				flexDirection={breakpoints.mdDown ? 'column' : 'row'}
 				justifyContent='space-evenly'
 			>
-				<Typography component='h1' variant='h2' className={styles.caption}>
-					HappyHouse
-				</Typography>
+				<Link href='/'>
+					<Typography component='h1' variant='h2' className={styles.caption}>
+						HappyHouse
+					</Typography>
+				</Link>
+
 				<TextField
 					select
 					label='Город'

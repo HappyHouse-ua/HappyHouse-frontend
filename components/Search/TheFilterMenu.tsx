@@ -14,35 +14,19 @@ import { useValidations } from '../../utils/useValidations'
 import { TheFiterMenuSetting } from './TheFilterMenuSettings'
 
 import styles from './TheFilterMenu.module.css'
-import { IOnlyStringKeys } from '../../utils/interfaces'
+import { FilterSettings, ValidatingFilterSettings } from '../../utils/interfaces'
 
 const accommodationTypes = ['Квартира', 'Дом', 'Земля']
 
 interface ITheFilterMenuProps {
 	close: () => void
 }
-
-interface IFilterSettings extends IOnlyStringKeys<string> {
-	accommodationType: string
-	currency: string
-	costFrom: string
-	costTo: string
-	areaFrom: string
-	areaTo: string
-	roomCountFrom: string
-	roomCountTo: string
-	floorFrom: string
-	floorTo: string
-	buildingFloorCountFrom: string
-	buildingFloorCountTo: string
-}
-
 const currencies = ['грн', '$']
 
 export function TheFilterMenu({ close }: ITheFilterMenuProps) {
 	const { onlyNumbers } = useValidations()
 
-	const [filterSettings, setFilterSettings] = useState<IFilterSettings>({
+	const [filterSettings, setFilterSettings] = useState<FilterSettings>({
 		accommodationType: accommodationTypes[0],
 		currency: currencies[0],
 		costFrom: '',
@@ -129,7 +113,7 @@ export function TheFilterMenu({ close }: ITheFilterMenuProps) {
 							key={settingType[0]}
 							changeHandler={changeHandler}
 							type={settingType}
-							settings={settings}
+							settings={settings as ValidatingFilterSettings}
 							validations={validations}
 						/>
 					))}

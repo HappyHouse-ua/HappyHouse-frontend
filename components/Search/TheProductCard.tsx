@@ -1,22 +1,24 @@
-import { Box, Card, Typography } from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 import Image from 'next/image'
 import Link from 'next/link'
-import { IOnlyStringKeys, IProductProperties } from '../../utils/interfaces'
+import { ShortProductInfo } from '../../utils/interfaces'
 import { useBreakpoints } from '../../utils/useBreakpoints'
 
 import styles from './TheProductCard.module.css'
 
-interface IProductCardProps {
+interface ProductCardProps extends ShortProductInfo {
 	href: string
-	imageSrc: string
-	priceUSD: number
-	priceUAH: number
-	shortDescription: string
-	address: string
-	properties: IProductProperties
 }
 
-const propertyNames: IOnlyStringKeys<string> = {
+interface propertyNames {
+	type: string
+	area: string
+	roomCount: string
+	floor: string
+	buildingFloorCount: string
+}
+
+const propertyNames: propertyNames = {
 	type: '',
 	area: 'Площадь:',
 	roomCount: 'Число комнат:',
@@ -24,15 +26,15 @@ const propertyNames: IOnlyStringKeys<string> = {
 	buildingFloorCount: 'Этажность здания:'
 }
 
-export function ProductCard({
-	imageSrc,
+export function TheProductCard({
+	image,
 	priceUAH,
 	priceUSD,
 	shortDescription,
 	address,
 	href,
 	properties
-}: IProductCardProps) {
+}: ProductCardProps) {
 	const breakpoints = useBreakpoints()
 
 	return (
@@ -49,7 +51,7 @@ export function ProductCard({
 					flexShrink='0'
 					height={breakpoints.mdDown ? '200px' : 'auto'}
 				>
-					<Image src={imageSrc} layout='fill' objectFit='cover'></Image>
+					<Image src={image} layout='fill' objectFit='cover'></Image>
 				</Box>
 				<Box display='flex' flexDirection='column' marginLeft='10px'>
 					<Box marginBottom='50px'>
@@ -77,7 +79,8 @@ export function ProductCard({
 									component='p'
 									className={styles.property}
 								>
-									{propertyNames[propertyName]} {properties[propertyName]}
+									{propertyNames[propertyName as keyof propertyNames]}{' '}
+									{properties[propertyName as keyof propertyNames]}
 								</Typography>
 							))}
 						</Box>
